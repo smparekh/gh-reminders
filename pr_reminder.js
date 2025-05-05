@@ -64,11 +64,6 @@ async function getOpenPRsByUser(username, organization = null) {
   `);
 
   console.log(`Found ${search.nodes.length} PRs`);
-
-  // print the PRs
-  search.nodes.forEach(node => {
-    console.log(`PR: ${node}`);
-  });
   
   // Filter out any invalid nodes
   return search.nodes.filter(node => node && node.repository);
@@ -133,7 +128,6 @@ async function findApprovedNotMergedPRs() {
     
     // Get all open PRs authored by you
     const openPRs = await getOpenPRsByUser(username, organization);
-    console.log(`Found ${openPRs.length} open PRs`);
     
     // Filter to get only approved but not merged PRs
     const results = [];
